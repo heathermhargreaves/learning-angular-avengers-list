@@ -1,14 +1,22 @@
-angular.module("avengersApp")
-  .controller('MainCtrl', function($scope, dataService) {
+// scripts/MainCtrl.js
 
-     $scope.getHeroes = function() { //javascript hoisting
-       dataService.avergers().then(function(response) {
-         $scope.avengers = response;
-      });
-    };
+angular
+	.module('avengersApp')
+	.controller('MainCtrl', function($scope, dataService) {
+
+		$scope.getHeroes = function(id)  {// javascript hoisting
+			dataService.avengers(id).then(function(response) {
+				$scope.avengers = response;
+			});
+		};
 
 
 
-    console.log(dataService); //will populate 15 objects in console
+		$scope.comics = [
+			{name: '3-D Man', id: 22300},
+			{name: 'X-Men', id: 22301},
+			{name: 'Hulk', id: 22302},
+			{name: 'New Warriors', id: 22303}
+		];
 
-  }); //end main controller
+	}); // end
