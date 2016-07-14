@@ -170,7 +170,20 @@ angular
 
 
 
-      //this.avengers = newAvengers;
+      this.avengers = function() {
+        var promise = $http.get('https://marvelApiUrl.com/api/heroes');
+
+          promise.then(function(response) {
+            var newArray = [];
+            var data = response.results;
+            for(var i = 0; i < data.length; i++) {
+              var personObj = {};
+              personObj.name = data[i].name;
+              personObj.birthYear = data[i].birthYear;
+              newArray.push(personObj);
+            }
+            return newArray;
+      });
 
 
   }); //end service

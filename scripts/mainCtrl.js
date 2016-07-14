@@ -2,7 +2,9 @@ angular.module("avengersApp")
   .controller('MainCtrl', function($scope, dataService) {
 
      $scope.getHeroes = function() { //javascript hoisting
-      $scope.avengers = dataService.avengers();
+       dataService.avergers().then(function(response) {
+         $scope.avengers = response;
+      });
     };
 
 
